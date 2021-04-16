@@ -1,33 +1,38 @@
 package com.avaliacao.pigbank.transacoes.model;
 
 import com.avaliacao.pigbank.cliente.model.Cliente;
-import com.avaliacao.pigbank.contaCorrente.model.ContaCorrete;
-import com.avaliacao.pigbank.contaPoupanca.model.ContaPoupanca;
+import com.avaliacao.pigbank.conta.model.Conta;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 
 @Data
 @Entity
 @Table(name = "HISTORICOTRANSACOES")
-public class HistoricosTransacoes {
+public class HistoricosTransacoes implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_HistoricoTransacao")
+    @Column(name = "ID_HISTORICOTRANSACAO")
     private Long id;
-    @Column
-    private ContaPoupanca contaPoupanca;
-    @Column
-    private ContaCorrete contaCorrete;
-    @Column
+
+    @Column(name = "CONTA")
+    private Conta conta;
+
+    @Column(name = "CLIENTE")
     private Cliente cliente;
-    @Column
+
+    @Column(name = "MOMENTO_TRANSACAO")
     private Instant momentoTransacao;
-    @Column
+
+    @Column(name = "VALOR_TRANSACAO")
     private Double valorTransacao;
-    @Column
+
+    @Column(name = "TIPO_TRANSACAO")
     private TipoTransacao tipoTransacao;
 
 }
