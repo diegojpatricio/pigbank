@@ -1,18 +1,16 @@
 package com.avaliacao.pigbank.conta.model;
 
-
-
-
 public enum TipoConta {
-    ContaCorrente("CC"), ContaPoupanca("CP");
+
+    CC("ContaCorrente"), CP("ContaPoupanca");
 
     public final String descricao;
 
     TipoConta(final String descricao) {
-        this.descricao = descricao;
-    }
+       this.descricao = descricao;
+   }
 
-    public String getDescricao(){
+   public TipoConta getDescricao(){
         return getDescricao();
     }
 }
