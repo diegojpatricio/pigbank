@@ -5,12 +5,17 @@ package com.avaliacao.pigbank.transacoes.services;
 
 import com.avaliacao.pigbank.conta.model.Conta;
 
+import com.avaliacao.pigbank.conta.model.TipoConta;
 import com.avaliacao.pigbank.conta.repositories.ContaRepository;
 import com.avaliacao.pigbank.conta.services.ContaService;
+import com.avaliacao.pigbank.exceptions.ExceptionDataIntegrityViolation;
 import com.avaliacao.pigbank.exceptions.ObjectNotFoundException;
+import com.avaliacao.pigbank.exceptions.SaldoInferiorParaTransferencia;
+import com.avaliacao.pigbank.transacoes.model.HistoricosTransacoes;
 import com.avaliacao.pigbank.transacoes.model.Transacao;
 import com.avaliacao.pigbank.transacoes.repository.TransacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -70,39 +75,42 @@ public class TransacaoService {
         return transacaoRepository.save(transacao);
     }
 
-    public Transacao transferir(Transacao transacao, Long idContaOrigem, Long idcontaDestino) {
+    public Transacao transferir(Transacao transacao, Long idContaOrigem, Long idcontaDestino){
         transacao.setId(null);
         transacao.setTipoTransacao(TRANSFERENCIA);
         Conta contaOrigem = contaService.buscarConta(idContaOrigem);
+        String agenciaOrigem = contaOrigem.getAgencia();
+        TipoConta tipoOrigem = contaOrigem.getTipoConta();
         Double saldoOrigem = contaOrigem.getSaldo();
         Double valorOrigem = transacao.getValor();
 
 
         Conta contaDestino = contaService.buscarConta(idcontaDestino);
         contaDestino.getNumeroConta();
-        contaDestino.getAgencia();
+        String agenciaDestino = contaDestino.getAgencia();
+        TipoConta tipoDestino = contaDestino.getTipoConta();
         Double saldoDestino = contaDestino.getSaldo();
 
-        if(saldoOrigem > 0){
-            //ERRO! SEU saldo está negativo
-            System.out.println("Saldo menor que ZERO");
-        }
-/*
-        if(valorOrigem > saldoOrigem) {
-            throw new Exception("ERRO! O valor da transfrencia é superior ao seu saldo.");
+
+        if(saldoOrigem <= 0 || saldoOrigem < valorOrigem || valorOrigem == 0){
+            throw new SaldoInferiorParaTransferencia("Saldo Insuficiente para operação.");
+
         }
 
-        if(contaOrigem.getAgencia() == contaDestino.getAgencia()){
-            //não cobra a tava de 0.001
-
-        }*/
-        Double novoSaldoOrigem = saldoOrigem - valorOrigem;
         Double novoSaldoDestino = saldoDestino + valorOrigem;
 
-        contaOrigem.setSaldo(novoSaldoOrigem);
-        contaDestino.setSaldo(novoSaldoDestino);
+        if(agenciaOrigem.equals(agenciaDestino)){
+            Double novoSaldoOrigem = saldoOrigem - valorOrigem;
+            contaOrigem.setSaldo(novoSaldoOrigem);
+        }else {
+            Double novoSaldoOrigem = saldoOrigem - valorOrigem;
+            novoSaldoOrigem = novoSaldoOrigem - (valorOrigem*0.001);
+            contaOrigem.setSaldo(novoSaldoOrigem);
+        }
 
+        contaDestino.setSaldo(novoSaldoDestino);
         transacao.setConta(contaDestino);
         return transacaoRepository.save(transacao);
     }
+    
 }

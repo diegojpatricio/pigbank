@@ -1,4 +1,4 @@
-package com.avaliacao.pigbank.cliente.resources.exeptions;
+package com.avaliacao.pigbank.exceptions.exeptions;
 
 
 public class StandardError {
