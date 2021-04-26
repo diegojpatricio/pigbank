@@ -12,16 +12,16 @@ PIG BANK usa alguams das tecnlogias mais recentes do mercado:
 
 * [**JAVA**] - Linguagem multiplataforma de alto desempenho;
 * [**SRPING BOOT**] - Framework para desenvolvimento de aplicações web/coporativas;
-* [**MYSQL**] - Banco de dados relacional mantido pela oracle;
+* [**POSTGRESQL**] - Banco de dados relacional de código aberto;
 * [**ANGULAR**] - Framework para criar UI web com JavaScript;
 * [**HEROKU**] - Plataforma em nuvem para manter as aplicações remotamente;
 
 
 ### API
 
-endpoit: 
-
 Path's funcionando com os verbos HTTP (**GET, POST, PUT E DELETE**):
+
+Para analizar a documentação no SWAGGER basta subir a aplicação e acessar: http://localhost:8080/swagger-ui/index.htm
 
 * /contas
 * /contas/{id}
@@ -54,7 +54,7 @@ Maiores detalhes podem ser encontrados na documentação:
 
 ![](https://github.com/diegojpatricio/pigbank/blob/main/assets/PIGBANK-HOME.jpg)
 
-link: https://www.figma.com/proto/sKoF5JSSjO778yJtxAQIEx/PIGBank?node-id=1%3A2&scaling=min-zoom
+Link do Protótipo: https://www.figma.com/proto/sKoF5JSSjO778yJtxAQIEx/PIGBank?node-id=1%3A2&scaling=min-zoom
 
 Para o desenvolvimento front-end da aplicação foi escolhido a tecnologia Angular. O projeto será desenvolvido em breve conforme orientação do protótipo.
 
