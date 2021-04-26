@@ -27,6 +27,7 @@ public class ContaService {
 
 
 
+
     public Conta buscarConta(Long id){
         Optional<Conta> obj = contaRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrato! ID: " + id +

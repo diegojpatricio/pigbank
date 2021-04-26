@@ -5,7 +5,6 @@ import com.avaliacao.pigbank.transacoes.model.Transacao;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -36,7 +35,7 @@ public class Conta implements Serializable {
     @JoinColumn(name = "CLIENTE_ID")
     private Cliente cliente;
 
-    //@Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(name="TIPO_CONTA")
     private TipoConta tipoConta;
 

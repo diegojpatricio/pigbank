@@ -4,7 +4,10 @@ package com.avaliacao.pigbank.cliente.resources;
 import com.avaliacao.pigbank.cliente.model.ClienteDTO;
 import com.avaliacao.pigbank.cliente.services.ClienteService;
 import com.avaliacao.pigbank.cliente.model.Cliente;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -19,12 +22,13 @@ public class ClienteResource {
 
     @Autowired
     private ClienteService clienteService;
-
+    
     @GetMapping(value = "/{id}")
     public ResponseEntity<Cliente> buscarCliente(@PathVariable Long id){
         Cliente obj = clienteService.buscarCliente(id);
         return ResponseEntity.ok().body(obj);
     }
+
 
     @GetMapping
     public  ResponseEntity<List<ClienteDTO>> listarClientes(){
