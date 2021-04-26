@@ -1,5 +1,7 @@
 # PIG BANK
 
+![](https://github.com/diegojpatricio/pigbank/blob/main/assets/PIGBANK-LOGO.jpg)
+
 ## Descrição:
   A presente apicação foi desenvolvida como atividade da Disciplina de Desenvolvimento e Administração de Aplicações Web Avançadas do UNIESP.
   Refere-se a um sistema de uma instituição bancária para gerenciar suas contas, clientes e transações.</center>
@@ -49,6 +51,8 @@ Maiores detalhes podem ser encontrados na documentação:
     
 
 ### INTERFACE 
+
+![](https://github.com/diegojpatricio/pigbank/blob/main/assets/PIGBANK-HOME.jpg)
 
 link: https://www.figma.com/proto/sKoF5JSSjO778yJtxAQIEx/PIGBank?node-id=1%3A2&scaling=min-zoom
 
