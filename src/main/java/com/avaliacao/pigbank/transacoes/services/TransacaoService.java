@@ -91,7 +91,6 @@ public class TransacaoService {
         TipoConta tipoDestino = contaDestino.getTipoConta();
         Double saldoDestino = contaDestino.getSaldo();
 
-
         if(saldoOrigem <= 0 || saldoOrigem < valorOrigem || valorOrigem == 0){
             throw new SaldoInferiorParaTransferencia("Saldo Insuficiente para operação.");
 
