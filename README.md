@@ -67,4 +67,4 @@ Para o desenvolvimento front-end da aplicação foi escolhido a tecnologia Angul
 
 **Free Software!**
 
-PROJETO UNIVERSITÁRIO DESENVOLVIDO POR [Diego Patrício](https://github.com/diegojpatricio) E [Rodrigo Ramos](https://github.com/)
+PROJETO UNIVERSITÁRIO DESENVOLVIDO POR [Diego Patrício](https://github.com/diegojpatricio)
